@@ -2,12 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { BookOpen, Compass, Code, Zap } from 'lucide-react';
+import VersionSelector from './VersionSelector';
 
 export default function Sidebar({ className }: { className?: string }) {
   const router = useRouter();
   const currentVersion = router.query.version as string || 'v1';
 
-  // In a real app, this would be generated from the file system or a config
   const links = [
     { slug: 'introduction', label: 'Introduction', icon: <BookOpen size={18} /> },
     { slug: 'quick-start', label: 'Quick Start', icon: <Zap size={18} /> },
@@ -16,9 +16,16 @@ export default function Sidebar({ className }: { className?: string }) {
   ];
 
   return (
-    <aside data-testid="sidebar" className={`${className} bg-slate-50 dark:bg-[#0f1115] transition-colors`}>
+    <aside data-testid="sidebar" className={`${className} bg-slate-50 dark:bg-[#0f1115] transition-colors flex flex-col`}>
       <div className="sticky top-6">
-        <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-2">
+        <div className="mb-6 px-3">
+          <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-2">
+            Version
+          </label>
+          <VersionSelector />
+        </div>
+
+        <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-3">
           Documentation
         </h4>
         <nav>
