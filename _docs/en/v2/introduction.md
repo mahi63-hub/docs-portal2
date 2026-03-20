@@ -1,1 +1,3 @@
-# Introduction v2`nWelcome to version 2.
+# Introduction
+
+Welcome to version 2 of the documentation.
